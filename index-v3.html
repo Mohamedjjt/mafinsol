@@ -1,0 +1,1252 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MA Financial Solutions & MA Care Solutions</title>
+<meta name="description" content="MA Financial Solutions en MA Care Solutions — interim finance en zorgprofessionals, Nederland.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════
+   TOKENS
+═══════════════════════════════════ */
+:root {
+  /* Finance */
+  --f-bg: #fafafa;
+  --f-surface: #ffffff;
+  --f-surface2: #f3f3f3;
+  --f-border: #e8e8e8;
+  --f-text: #111111;
+  --f-muted: #777777;
+  --f-accent: #e05c3a;
+  --f-accent-light: #fff0ec;
+  --f-ink: #1a1a1a;
+
+  /* Care */
+  --c-bg: #fafaf8;
+  --c-surface: #ffffff;
+  --c-surface2: #f4f3ef;
+  --c-border: #e5e3db;
+  --c-text: #141410;
+  --c-muted: #7a7668;
+  --c-accent: #c4763a;
+  --c-accent-light: #fdf3e8;
+  --c-ink: #1c1b16;
+
+  /* Active */
+  --bg: var(--f-bg);
+  --surface: var(--f-surface);
+  --surface2: var(--f-surface2);
+  --border: var(--f-border);
+  --text: var(--f-text);
+  --muted: var(--f-muted);
+  --accent: var(--f-accent);
+  --accent-light: var(--f-accent-light);
+  --ink: var(--f-ink);
+
+  --font-serif: 'Instrument Serif', Georgia, serif;
+  --font-sans: 'Space Grotesk', system-ui, sans-serif;
+  --max-w: 1200px;
+  --fade: 380ms ease;
+  --section-pad: clamp(5rem, 9vw, 9rem);
+  --radius: 3px;
+}
+
+body.care {
+  --bg: var(--c-bg);
+  --surface: var(--c-surface);
+  --surface2: var(--c-surface2);
+  --border: var(--c-border);
+  --text: var(--c-text);
+  --muted: var(--c-muted);
+  --accent: var(--c-accent);
+  --accent-light: var(--c-accent-light);
+  --ink: var(--c-ink);
+}
+
+/* ═══════════════════════════════════
+   RESET
+═══════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-sans);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.65;
+  overflow-x: hidden;
+  transition: background var(--fade), color var(--fade);
+}
+h1,h2,h3,h4 { font-family: var(--font-serif); line-height: 1.1; }
+a { color: inherit; text-decoration: none; }
+button { font-family: var(--font-sans); cursor: pointer; border: none; background: none; }
+img { display: block; max-width: 100%; }
+
+body:not(.care) .care-only { display: none; }
+body.care .finance-only { display: none; }
+
+/* ═══════════════════════════════════
+   HEADER
+═══════════════════════════════════ */
+#site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  transition: background var(--fade), border-color var(--fade), box-shadow 0.2s;
+}
+
+.header-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 clamp(1.25rem, 4vw, 2.5rem);
+  height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.logo {
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  transition: color var(--fade);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.logo-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+  transition: background var(--fade);
+  flex-shrink: 0;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: clamp(1.25rem, 2.5vw, 2rem);
+  list-style: none;
+}
+.nav-links a {
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--muted);
+  letter-spacing: 0.02em;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--text); }
+
+/* Toggle */
+.mode-toggle-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-shrink: 0;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  padding: 0.25rem;
+  transition: background var(--fade), border-color var(--fade);
+}
+
+.toggle-btn {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  padding: 0.35rem 0.85rem;
+  border-radius: 100px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.25s, color 0.25s;
+  font-family: var(--font-sans);
+  color: var(--muted);
+  background: transparent;
+}
+.toggle-btn.active {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* ═══════════════════════════════════
+   LAYOUT
+═══════════════════════════════════ */
+.container {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 clamp(1.25rem, 4vw, 2.5rem);
+}
+.section { padding: var(--section-pad) 0; }
+.section-alt { background: var(--surface); transition: background var(--fade); }
+
+.label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1.25rem;
+  transition: color var(--fade);
+}
+.label::before {
+  content: '';
+  width: 18px;
+  height: 1px;
+  background: var(--accent);
+  transition: background var(--fade);
+}
+
+.section-title {
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  color: var(--ink);
+  max-width: 640px;
+  margin-bottom: 1.25rem;
+  transition: color var(--fade);
+}
+.section-title em { font-style: italic; color: var(--accent); transition: color var(--fade); }
+
+.section-intro {
+  font-size: 0.98rem;
+  color: var(--muted);
+  max-width: 540px;
+  line-height: 1.85;
+  margin-bottom: 3.5rem;
+  transition: color var(--fade);
+}
+
+/* Fade in */
+.fade-in { opacity: 0; transform: translateY(18px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.fade-in.visible { opacity: 1; transform: none; }
+
+/* ═══════════════════════════════════
+   HERO
+═══════════════════════════════════ */
+#hero {
+  padding: clamp(4rem,8vw,8rem) 0 clamp(3rem,6vw,6rem);
+  position: relative;
+  overflow: hidden;
+  min-height: calc(100svh - 58px);
+  display: flex;
+  align-items: center;
+}
+
+/* Diagonal accent strip */
+#hero::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 38%;
+  height: 100%;
+  background: var(--surface2);
+  clip-path: polygon(12% 0, 100% 0, 100% 100%, 0% 100%);
+  pointer-events: none;
+  transition: background var(--fade);
+  z-index: 0;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 4rem;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 1.75rem;
+  transition: color var(--fade);
+}
+.hero-eyebrow span {
+  display: inline-block;
+  background: var(--accent);
+  color: #fff;
+  padding: 0.2rem 0.6rem;
+  border-radius: 2px;
+  font-size: 0.66rem;
+  letter-spacing: 0.1em;
+  transition: background var(--fade);
+}
+
+.hero-headline {
+  font-size: clamp(2.8rem, 5.5vw, 5rem);
+  font-weight: 400;
+  color: var(--ink);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.75rem;
+  transition: color var(--fade);
+  text-wrap: pretty;
+}
+.hero-headline em {
+  font-style: italic;
+  color: var(--accent);
+  transition: color var(--fade);
+}
+
+.hero-sub {
+  font-size: 1rem;
+  color: var(--muted);
+  max-width: 520px;
+  line-height: 1.85;
+  margin-bottom: 2.5rem;
+  transition: color var(--fade);
+}
+
+.hero-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 2.5rem;
+}
+.tag {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: var(--muted);
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  padding: 0.3rem 0.7rem;
+  border-radius: 100px;
+  transition: background var(--fade), border-color var(--fade), color var(--fade);
+}
+
+.hero-actions { display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap; }
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: var(--ink);
+  color: #fff;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  padding: 0.85rem 1.75rem;
+  border-radius: var(--radius);
+  transition: background 0.2s, transform 0.2s;
+}
+.btn-primary:hover { background: var(--accent); transform: translateY(-1px); }
+.btn-primary svg { transition: transform 0.2s; }
+.btn-primary:hover svg { transform: translateX(3px); }
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--muted);
+  border: 1px solid var(--border);
+  padding: 0.85rem 1.5rem;
+  border-radius: var(--radius);
+  transition: color 0.2s, border-color 0.2s;
+}
+.btn-outline:hover { color: var(--text); border-color: var(--text); }
+
+/* Hero stats card */
+.hero-card {
+  background: var(--ink);
+  color: #fff;
+  border-radius: var(--radius);
+  padding: 2.5rem;
+  position: relative;
+  overflow: hidden;
+}
+.hero-card::before {
+  content: '';
+  position: absolute;
+  bottom: -40px;
+  right: -40px;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: var(--accent);
+  opacity: 0.12;
+  transition: background var(--fade);
+}
+.hero-card-label {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+  margin-bottom: 2rem;
+}
+.hero-stat {
+  padding: 1.25rem 0;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+}
+.hero-stat:last-child { border-bottom: none; padding-bottom: 0; }
+.hero-stat-num {
+  font-family: var(--font-serif);
+  font-size: 2.2rem;
+  color: var(--accent);
+  line-height: 1;
+  min-width: 3.5rem;
+  transition: color var(--fade);
+}
+.hero-stat-label {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.45;
+}
+
+/* ═══════════════════════════════════
+   OVER ONS
+═══════════════════════════════════ */
+.about-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: start;
+}
+
+.about-text p {
+  font-size: 0.98rem;
+  line-height: 1.9;
+  color: var(--muted);
+  margin-bottom: 1.25rem;
+  transition: color var(--fade);
+}
+.about-text p strong { color: var(--text); font-weight: 600; }
+
+/* Kwaliteiten tabel */
+.kwal-list { display: flex; flex-direction: column; }
+.kwal-row {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 1rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border);
+  align-items: baseline;
+  transition: border-color var(--fade);
+}
+.kwal-row:first-child { border-top: 1px solid var(--border); }
+.kwal-key {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--muted);
+  letter-spacing: 0.02em;
+  transition: color var(--fade);
+}
+.kwal-val {
+  font-size: 0.85rem;
+  color: var(--text);
+  line-height: 1.5;
+  transition: color var(--fade);
+}
+
+/* ═══════════════════════════════════
+   DIENSTEN
+═══════════════════════════════════ */
+.diensten-layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 5rem;
+  align-items: start;
+}
+
+.diensten-intro { position: sticky; top: 80px; }
+
+.diensten-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: background var(--fade), border-color var(--fade);
+}
+
+.dienst-card {
+  background: var(--surface);
+  padding: 1.75rem 2rem;
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  gap: 1.25rem;
+  align-items: start;
+  transition: background 0.2s;
+}
+.dienst-card:hover { background: var(--accent-light); }
+
+.dienst-num {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 0.08em;
+  padding-top: 0.2rem;
+  transition: color var(--fade);
+}
+.dienst-title {
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 0.4rem;
+  line-height: 1.3;
+  transition: color var(--fade);
+}
+.dienst-desc {
+  font-size: 0.84rem;
+  color: var(--muted);
+  line-height: 1.7;
+  transition: color var(--fade);
+}
+
+/* ═══════════════════════════════════
+   REFERENTIES — logo grid
+═══════════════════════════════════ */
+.ref-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: background var(--fade), border-color var(--fade);
+}
+
+.ref-card {
+  background: var(--surface);
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  transition: background 0.2s;
+}
+.ref-card:hover { background: var(--accent-light); }
+
+.ref-logo {
+  height: 28px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+.ref-card:hover .ref-logo { opacity: 1; }
+.ref-logo svg { height: 100%; width: auto; max-width: 100px; }
+
+.ref-org {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--ink);
+  transition: color var(--fade);
+}
+.ref-role {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent);
+  transition: color var(--fade);
+}
+.ref-desc {
+  font-size: 0.81rem;
+  color: var(--muted);
+  line-height: 1.55;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--border);
+  transition: color var(--fade), border-color var(--fade);
+}
+
+/* ═══════════════════════════════════
+   WERKWIJZE — numbered list
+═══════════════════════════════════ */
+.werkwijze-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: background var(--fade), border-color var(--fade);
+  margin-top: 3rem;
+}
+
+.werkwijze-item {
+  background: var(--surface);
+  padding: 2rem 2.25rem;
+  display: grid;
+  grid-template-columns: 36px 1fr;
+  gap: 1rem;
+  align-items: start;
+  transition: background 0.2s;
+}
+.werkwijze-item:hover { background: var(--surface2); }
+
+.ww-num {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  padding-top: 0.25rem;
+  transition: color var(--fade);
+}
+.ww-title {
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 0.45rem;
+  transition: color var(--fade);
+}
+.ww-desc {
+  font-size: 0.83rem;
+  color: var(--muted);
+  line-height: 1.7;
+  transition: color var(--fade);
+}
+
+/* ═══════════════════════════════════
+   CONTACT
+═══════════════════════════════════ */
+.contact-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 6rem;
+  align-items: start;
+}
+
+.contact-title {
+  font-size: clamp(1.6rem, 2.8vw, 2.4rem);
+  color: var(--ink);
+  margin-bottom: 2rem;
+  line-height: 1.2;
+  transition: color var(--fade);
+}
+
+.contact-details { display: flex; flex-direction: column; gap: 0.65rem; }
+.contact-detail {
+  display: flex;
+  gap: 0.75rem;
+  font-size: 0.85rem;
+  color: var(--muted);
+  transition: color var(--fade);
+}
+.contact-detail strong { color: var(--text); font-weight: 600; min-width: 70px; transition: color var(--fade); }
+.contact-detail a { color: var(--accent); transition: opacity 0.2s; }
+.contact-detail a:hover { opacity: 0.75; }
+
+/* Form */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 2.5rem;
+  transition: background var(--fade), border-color var(--fade);
+}
+
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+.form-group label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  transition: color var(--fade);
+}
+.form-group input,
+.form-group select,
+.form-group textarea {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.72rem 0.9rem;
+  color: var(--text);
+  font-size: 0.88rem;
+  font-family: var(--font-sans);
+  outline: none;
+  width: 100%;
+  transition: border-color 0.2s, background var(--fade);
+}
+.form-group input::placeholder,
+.form-group textarea::placeholder { color: var(--muted); opacity: 0.5; }
+.form-group select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23999' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 0.9rem center; }
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus { border-color: var(--accent); }
+.form-group textarea { resize: vertical; min-height: 96px; }
+
+.btn-submit {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: var(--ink);
+  color: #fff;
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  padding: 0.85rem 1.75rem;
+  border-radius: var(--radius);
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+  align-self: flex-start;
+}
+.btn-submit:hover { background: var(--accent); transform: translateY(-1px); }
+
+/* ═══════════════════════════════════
+   FOOTER
+═══════════════════════════════════ */
+footer {
+  background: var(--ink);
+  padding: 2rem 0;
+  transition: background var(--fade);
+}
+.footer-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 clamp(1.25rem, 4vw, 2.5rem);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.footer-copy { font-size: 0.78rem; color: rgba(255,255,255,0.35); }
+.footer-links { display: flex; gap: 1.5rem; list-style: none; }
+.footer-links a { font-size: 0.78rem; color: rgba(255,255,255,0.35); transition: color 0.2s; }
+.footer-links a:hover { color: rgba(255,255,255,0.7); }
+.footer-kvk { font-size: 0.75rem; color: rgba(255,255,255,0.2); }
+
+/* ═══════════════════════════════════
+   MODAL
+═══════════════════════════════════ */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+  backdrop-filter: blur(4px);
+}
+.modal-overlay.open { opacity: 1; pointer-events: all; }
+.modal-box {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 2.5rem;
+  max-width: 480px;
+  width: 100%;
+  transform: translateY(12px);
+  transition: transform 0.3s ease;
+}
+.modal-overlay.open .modal-box { transform: translateY(0); }
+.modal-title { font-family: var(--font-serif); font-size: 1.5rem; color: var(--ink); margin-bottom: 0.75rem; }
+.modal-body { font-size: 0.88rem; color: var(--muted); line-height: 1.7; margin-bottom: 1.5rem; }
+.modal-close {
+  background: var(--ink);
+  color: #fff;
+  padding: 0.6rem 1.5rem;
+  border-radius: var(--radius);
+  font-size: 0.82rem;
+  font-weight: 600;
+  font-family: var(--font-sans);
+  cursor: pointer;
+  border: none;
+  transition: background 0.2s;
+}
+.modal-close:hover { background: var(--accent); }
+
+/* ═══════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════ */
+@media (max-width: 1000px) {
+  .diensten-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+  .diensten-intro { position: static; }
+}
+@media (max-width: 860px) {
+  .hero-grid { grid-template-columns: 1fr; }
+  .hero-card { display: none; }
+  #hero::after { display: none; }
+  .about-layout, .contact-layout { grid-template-columns: 1fr; gap: 3rem; }
+  .werkwijze-layout { grid-template-columns: 1fr; }
+}
+@media (max-width: 680px) {
+  .nav-links { display: none; }
+  .form-row { grid-template-columns: 1fr; }
+}
+@media (max-width: 480px) {
+  .hero-actions { flex-direction: column; align-items: stretch; }
+  .btn-primary, .btn-outline { justify-content: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header id="site-header">
+  <div class="header-inner">
+    <a href="#hero" class="logo">
+      <span class="logo-dot"></span>
+      <span class="finance-only">MA Financial Solutions</span>
+      <span class="care-only">MA Care Solutions</span>
+    </a>
+
+    <nav aria-label="Paginanavigatie">
+      <ul class="nav-links">
+        <li><a href="#over-ons">Over ons</a></li>
+        <li><a href="#diensten">Diensten</a></li>
+        <li><a href="#referenties">Referenties</a></li>
+        <li><a href="#werkwijze">Werkwijze</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <div class="mode-toggle-wrap" role="group" aria-label="Kies dienst">
+      <button class="toggle-btn active" id="toggleFinance" aria-pressed="true">Finance</button>
+      <button class="toggle-btn" id="toggleCare" aria-pressed="false">Care</button>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section id="hero" class="section">
+  <div class="container">
+    <div class="hero-grid">
+
+      <div class="hero-content fade-in">
+        <div class="finance-only">
+          <div class="hero-eyebrow"><span>Finance</span> Interim · Nederland</div>
+          <h1 class="hero-headline">Finance expertise<br>die <em>direct waarde</em><br>toevoegt.</h1>
+          <p class="hero-sub">MA Financial Solutions levert scherpe, resultaatgerichte professionals voor complexe finance vraagstukken — van ERP-migraties tot internationale consolidatie.</p>
+        </div>
+        <div class="care-only">
+          <div class="hero-eyebrow"><span>Care</span> Zorgprofessionals · Nederland</div>
+          <h1 class="hero-headline">De juiste begeleider<br>op het <em>juiste moment</em><br>voor uw cliënten.</h1>
+          <p class="hero-sub">MA Care Solutions levert gekwalificeerde zorgprofessionals aan zorginstellingen — snel inzetbaar, vakkundig en persoonlijk betrokken.</p>
+        </div>
+
+        <div class="hero-tags">
+          <span class="tag">KvK 93664850</span>
+          <span class="tag">Modelovereenkomst</span>
+          <span class="tag">Beroepsaansprakelijkheid</span>
+          <span class="tag">Direct inzetbaar</span>
+        </div>
+
+        <div class="hero-actions">
+          <a href="#contact" class="btn-primary">
+            Opdracht bespreken
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <a href="#diensten" class="btn-outline">Bekijk diensten</a>
+        </div>
+      </div>
+
+      <!-- Stats card -->
+      <aside class="hero-card fade-in" aria-hidden="true">
+        <div class="hero-card-label finance-only">MA Financial Solutions</div>
+        <div class="hero-card-label care-only">MA Care Solutions</div>
+
+        <div class="finance-only">
+          <div class="hero-stat">
+            <div class="hero-stat-num">4+</div>
+            <div class="hero-stat-label">jaar interim<br>finance ervaring</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">7+</div>
+            <div class="hero-stat-label">toonaangevende<br>opdrachtgevers</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">SAP</div>
+            <div class="hero-stat-label">S/4HANA &amp; ECC<br>migratie-ervaring</div>
+          </div>
+        </div>
+        <div class="care-only">
+          <div class="hero-stat">
+            <div class="hero-stat-num">Snel</div>
+            <div class="hero-stat-label">inzetbaar, ook<br>op korte termijn</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">100%</div>
+            <div class="hero-stat-label">gediplomeerd<br>en verzekerd</div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-num">Flex</div>
+            <div class="hero-stat-label">ambulant, intramuraal<br>of projectbasis</div>
+          </div>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</section>
+
+<!-- OVER ONS -->
+<section id="over-ons" class="section section-alt">
+  <div class="container">
+    <div class="about-layout">
+      <div class="about-text fade-in">
+        <span class="label">Over ons</span>
+        <h2 class="section-title finance-only">Specialist in finance<br><em>die verder kijkt</em></h2>
+        <h2 class="section-title care-only">Zorgprofessionals die<br><em>direct het verschil maken</em></h2>
+
+        <div class="finance-only">
+          <p>MA Financial Solutions is een gespecialiseerde interim finance dienstverlener. Wij opereren op het snijvlak van <strong>financial accounting, procesoptimalisatie en ERP-implementatie</strong> — thuis in complexe, internationale omgevingen.</p>
+          <p>Van Europese consolidaties tot SAP-migraties: onze professionals leveren direct waarde, zonder weken inwerkperiode.</p>
+        </div>
+        <div class="care-only">
+          <p>MA Care Solutions is uw partner voor flexibele inzet van zorgprofessionals. Wij leveren mensen die <strong>direct aansluiten bij uw werkwijze, uw cliënten en uw team</strong> — zonder lange inwerktijd.</p>
+          <p>Zorginstellingen kiezen voor ons omdat wij snel schakelen, transparant communiceren en kwaliteit boven kwantiteit stellen.</p>
+        </div>
+      </div>
+
+      <div class="fade-in">
+        <div class="finance-only kwal-list">
+          <div class="kwal-row"><span class="kwal-key">Reporting</span><span class="kwal-val">IFRS 16, consolidatie, multi-entity, Europese entiteiten</span></div>
+          <div class="kwal-row"><span class="kwal-key">ERP</span><span class="kwal-val">SAP S/4HANA, SAP ECC, RE-FX, Microsoft Dynamics</span></div>
+          <div class="kwal-row"><span class="kwal-key">Automatisering</span><span class="kwal-val">Power BI, Lean Black Belt, RPA-tooling</span></div>
+          <div class="kwal-row"><span class="kwal-key">Talen</span><span class="kwal-val">Nederlands &amp; Engels — zakelijk op hoog niveau</span></div>
+          <div class="kwal-row"><span class="kwal-key">Registratie</span><span class="kwal-val">KvK 93664850 · Modelovereenkomst · Beroepsaansprakelijkheid</span></div>
+        </div>
+        <div class="care-only kwal-list">
+          <div class="kwal-row"><span class="kwal-key">Ambulant</span><span class="kwal-val">Thuis, op locatie of hybride — aansluitend bij uw zorgmodel</span></div>
+          <div class="kwal-row"><span class="kwal-key">Gehandicaptenzorg</span><span class="kwal-val">Inzetbaar bij verstandelijke en lichamelijke beperkingen</span></div>
+          <div class="kwal-row"><span class="kwal-key">Vervanging</span><span class="kwal-val">Flexibel beschikbaar, ook op korte termijn</span></div>
+          <div class="kwal-row"><span class="kwal-key">Rapportage</span><span class="kwal-val">Ondersteuningsplannen en dossiervorming conform uw standaard</span></div>
+          <div class="kwal-row"><span class="kwal-key">Registratie</span><span class="kwal-val">KvK 93664850 · Modelovereenkomst · Beroepsaansprakelijkheid</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIENSTEN -->
+<section id="diensten" class="section">
+  <div class="container">
+    <div class="diensten-layout">
+      <div class="diensten-intro fade-in">
+        <span class="label">Diensten</span>
+        <h2 class="section-title finance-only">Finance Solutions</h2>
+        <h2 class="section-title care-only">Care Solutions</h2>
+        <p class="section-intro finance-only">Wij leveren finance expertise op de gebieden waar uw organisatie het meest behoefte aan heeft.</p>
+        <p class="section-intro care-only">Wij bieden zorginstellingen gekwalificeerde begeleiding — flexibel, betrouwbaar en snel inzetbaar.</p>
+      </div>
+
+      <div class="finance-only diensten-cards fade-in">
+        <div class="dienst-card"><div class="dienst-num">01</div><div><div class="dienst-title">Interim Financial Controlling</div><div class="dienst-desc">Maand-, kwartaal- en jaarafsluitingen, consolidatie van Europese entiteiten, SOX-controles en management reporting.</div></div></div>
+        <div class="dienst-card"><div class="dienst-num">02</div><div><div class="dienst-title">ERP-migratie &amp; Procesoptimalisatie</div><div class="dienst-desc">Specifieke ervaring met SAP ECC naar SAP S/4HANA migraties, inclusief data-validatie en procesherontwerp.</div></div></div>
+        <div class="dienst-card"><div class="dienst-num">03</div><div><div class="dienst-title">Financial Accounting &amp; Reporting</div><div class="dienst-desc">GL-accounting, IFRS 16 lease accounting, AP-processen, BTW/ICP-aangiften en periodieke close.</div></div></div>
+        <div class="dienst-card"><div class="dienst-num">04</div><div><div class="dienst-title">Data &amp; Analyse</div><div class="dienst-desc">Financiële analyses, rapportage-efficiëntie, identificeren van bottlenecks en duurzame procesverbeteringen.</div></div></div>
+        <div class="dienst-card"><div class="dienst-num">05</div><div><div class="dienst-title">Automatisering &amp; RPA</div><div class="dienst-desc">Wij identificeren repetitieve processen en automatiseren deze met RPA-tooling — zodat uw team zich richt op werk dat er toe doet.</div></div></div>
+        <div class="dienst-card"><div class="dienst-num">06</div><div><div class="dienst-title">Dashboarding &amp; Rapportage</div><div class="dienst-desc">Van ruwe data naar heldere Power BI dashboards. Wij bouwen inzicht dat besluitvorming versnelt — real-time en op maat.</div></div></div>
+      </div>
+
+      <div class="care-only diensten-cards fade-in">
+        <div class="dienst-card"><div class="dienst-num">01</div><div><div class="dienst-title">Ambulante Begeleiding</div><div class="dienst-desc">Wij leveren begeleiders die cliënten thuis ondersteunen bij zelfredzaamheid, dagstructuur en participatie — op maat.</div></div></div>
+        <div class="dienst-card"><div class="dienst-num">02</div><div><div class="dienst-title">Gehandicaptenzorg</div><div class="dienst-desc">Gekwalificeerde professionals voor cliënten met een verstandelijke of lichamelijke beperking, ambulant en intramuraal.</div></div></div>
+        <div class="dienst-card"><div class="dienst-num">03</div><div><div class="dienst-title">Vervanging &amp; Projectinzet</div><div class="dienst-desc">Snel inzetbaar bij ziekte, verlof of piekbelasting. Wij zorgen voor zorgcontinuïteit zonder lange procedures.</div></div></div>
+        <div class="dienst-card"><div class="dienst-num">04</div><div><div class="dienst-title">Begeleidingsplannen &amp; Rapportage</div><div class="dienst-desc">Onze professionals werken conform uw kwaliteitsstandaard: ondersteuningsplannen en dossiervorming op orde.</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REFERENTIES -->
+<section id="referenties" class="section section-alt">
+  <div class="container">
+    <div class="fade-in">
+      <span class="label">Referenties</span>
+      <h2 class="section-title finance-only">Vertrouwd door toonaangevende organisaties</h2>
+      <h2 class="section-title care-only">Ingezet bij gerenommeerde zorginstellingen</h2>
+    </div>
+
+    <div class="ref-grid finance-only fade-in">
+      <div class="ref-card">
+        <div class="ref-logo"><svg viewBox="0 0 110 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="110" height="32" rx="3" fill="#FFD700"/><text x="10" y="23" font-family="Arial Black,sans-serif" font-size="20" font-weight="900" fill="#CC0000" letter-spacing="1">JUMBO</text></svg></div>
+        <div class="ref-org">Jumbo Supermarkten</div>
+        <div class="ref-role">Interim Finance (a.i.)</div>
+        <p class="ref-desc">Één van de grootste retailers van Europa, actief in Nederland en België met meer dan 700 vestigingen.</p>
+      </div>
+      <div class="ref-card">
+        <div class="ref-logo"><svg viewBox="0 0 110 32" fill="none" xmlns="http://www.w3.org/2000/svg"><text x="4" y="24" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#0B5ED7" letter-spacing="-0.5">Philips</text><g transform="translate(84,4)"><rect x="0" y="0" width="5" height="22" rx="2.5" fill="#0B5ED7"/><rect x="8" y="0" width="5" height="22" rx="2.5" fill="#0B5ED7"/><rect x="16" y="0" width="5" height="22" rx="2.5" fill="#0B5ED7"/></g></svg></div>
+        <div class="ref-org">Philips IGTD</div>
+        <div class="ref-role">Interim Finance (a.i.)</div>
+        <p class="ref-desc">Wereldwijd actief medisch-technologisch concern. Financiële processen in meerdere Europese landen.</p>
+      </div>
+      <div class="ref-card">
+        <div class="ref-logo"><svg viewBox="0 0 90 32" fill="none" xmlns="http://www.w3.org/2000/svg"><text x="2" y="25" font-family="Arial Black,sans-serif" font-size="24" font-weight="900" fill="#003087" letter-spacing="1">ASML</text></svg></div>
+        <div class="ref-org">ASML</div>
+        <div class="ref-role">Interim Finance (a.i.)</div>
+        <p class="ref-desc">Marktleider in lithografiesystemen voor de halfgeleiderindustrie, actief in meer dan 60 landen.</p>
+      </div>
+      <div class="ref-card">
+        <div class="ref-logo"><svg viewBox="0 0 140 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="140" height="32" rx="3" fill="#E8232A"/><text x="8" y="22" font-family="Arial,sans-serif" font-size="13" font-weight="700" fill="#FFFFFF" letter-spacing="0.3">VAN LOON GROUP</text></svg></div>
+        <div class="ref-org">Van Loon Group</div>
+        <div class="ref-role">Interim Finance (a.i.)</div>
+        <p class="ref-desc">Toonaangevend familiebedrijf in transport en logistiek met Europees netwerk.</p>
+      </div>
+      <div class="ref-card">
+        <div class="ref-logo"><svg viewBox="0 0 140 32" fill="none" xmlns="http://www.w3.org/2000/svg"><text x="4" y="24" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#00A389" letter-spacing="-0.3">Helderzorg</text></svg></div>
+        <div class="ref-org">Helderzorg</div>
+        <div class="ref-role">Interim Finance (a.i.)</div>
+        <p class="ref-desc">Ambulante zorgverlener actief in Gelderland en Overijssel, specialisatie in complexe ondersteuningsvragen.</p>
+      </div>
+    </div>
+
+    <div class="ref-grid care-only fade-in">
+      <div class="ref-card">
+        <div class="ref-logo"><svg viewBox="0 0 140 32" fill="none" xmlns="http://www.w3.org/2000/svg"><text x="4" y="24" font-family="Arial,sans-serif" font-size="18" font-weight="700" fill="#00A389" letter-spacing="-0.3">Helderzorg</text></svg></div>
+        <div class="ref-org">Helderzorg</div>
+        <div class="ref-role">Persoonlijk Begeleider (a.i.)</div>
+        <p class="ref-desc">Ambulante zorgverlener in Apeldoorn, gericht op herstel en zelfstandigheid van cliënten met complexe ondersteuningsvragen.</p>
+      </div>
+      <div class="ref-card">
+        <div class="ref-org">Amor Zorg</div>
+        <div class="ref-role">Persoonlijk Begeleider (a.i.)</div>
+        <p class="ref-desc">Zorgaanbieder gespecialiseerd in ambulante begeleiding van mensen met een hulpvraag in de thuissituatie.</p>
+      </div>
+      <div class="ref-card">
+        <div class="ref-org">Prisma</div>
+        <div class="ref-role">Assistent Begeleider</div>
+        <p class="ref-desc">Grote zorgorganisatie in Noord-Brabant, gericht op mensen met een verstandelijke beperking.</p>
+      </div>
+      <div class="ref-card">
+        <div class="ref-org">Lumens Groep</div>
+        <div class="ref-role">Jongerenwerker</div>
+        <p class="ref-desc">Welzijnsorganisatie in Eindhoven actief in jongerenwerk, opvoedondersteuning en sociale wijkteams.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WERKWIJZE -->
+<section id="werkwijze" class="section">
+  <div class="container">
+    <div class="fade-in">
+      <span class="label">Werkwijze</span>
+      <h2 class="section-title">Hoe wij werken — en waarom dat <em>het verschil maakt</em></h2>
+      <p class="section-intro">Heldere afspraken, concrete resultaten en een samenwerking die echt werkt.</p>
+    </div>
+    <div class="werkwijze-layout fade-in">
+      <div class="werkwijze-item"><div class="ww-num">01</div><div><div class="ww-title">Resultaat boven uren</div><div class="ww-desc">Opdrachten worden afgebakend op concreet resultaat, niet als open inzet onder dagelijkse aansturing.</div></div></div>
+      <div class="werkwijze-item"><div class="ww-num">02</div><div><div class="ww-title">Eigen werkwijze &amp; expertise</div><div class="ww-desc">Hoe het werk wordt uitgevoerd bepalen wij op basis van professionele standaarden. Het resultaat bepalen we samen.</div></div></div>
+      <div class="werkwijze-item"><div class="ww-num">03</div><div><div class="ww-title">Meerdere opdrachtgevers</div><div class="ww-desc">Aantoonbaar werkzaam voor verschillende opdrachtgevers in zowel finance als zorg — structureel parallel.</div></div></div>
+      <div class="werkwijze-item"><div class="ww-num">04</div><div><div class="ww-title">Modelovereenkomst</div><div class="ww-desc">Wij werken met een goedgekeurde modelovereenkomst die de samenwerking helder vastlegt conform Wet DBA.</div></div></div>
+      <div class="werkwijze-item"><div class="ww-num">05</div><div><div class="ww-title">Eigen middelen &amp; risico</div><div class="ww-desc">Eigen apparatuur, doorlopende investering in opleiding en beroepsaansprakelijkheidsverzekering.</div></div></div>
+      <div class="werkwijze-item"><div class="ww-num">06</div><div><div class="ww-title">Aanvullend, niet vervangend</div><div class="ww-desc">Onze diensten zijn projectmatig en aanvullend — geen exclusiviteit, geen structurele functies die intern horen.</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section section-alt">
+  <div class="container">
+    <div class="contact-layout">
+      <div class="fade-in">
+        <span class="label">Contact</span>
+        <h2 class="contact-title">Een opdracht bespreken? Wij reageren binnen één werkdag.</h2>
+        <div class="contact-details">
+          <div class="contact-detail"><strong>E-mail</strong><a href="mailto:info@mafinsol.nl">info@mafinsol.nl</a></div>
+          <div class="contact-detail"><strong>Telefoon</strong><a href="tel:+31640154548">+31 6 40 15 45 48</a></div>
+          <div class="contact-detail"><strong>LinkedIn</strong><a href="https://linkedin.com/in/mohamedajtitouh" target="_blank" rel="noopener">linkedin.com/in/mohamedajtitouh</a></div>
+          <div class="contact-detail"><strong>Werkgebied</strong><span>Nederland (op locatie + remote)</span></div>
+          <div class="contact-detail"><strong>KvK</strong><span>93664850</span></div>
+        </div>
+      </div>
+
+      <form class="contact-form fade-in" id="contactForm3" novalidate>
+        <div class="form-row">
+          <div class="form-group"><label for="n3">Naam *</label><input type="text" id="n3" name="naam" required placeholder="Uw volledige naam"></div>
+          <div class="form-group"><label for="o3">Organisatie</label><input type="text" id="o3" name="org" placeholder="Bedrijfsnaam"></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label for="e3">E-mail *</label><input type="email" id="e3" name="email" required placeholder="u@bedrijf.nl"></div>
+          <div class="form-group"><label for="t3">Telefoon</label><input type="tel" id="t3" name="tel" placeholder="+31 6 ..."></div>
+        </div>
+        <div class="form-group">
+          <label for="type3">Type opdracht</label>
+          <select id="type3" name="type">
+            <option value="">Selecteer een type...</option>
+            <optgroup label="Finance Solutions" class="finance-optgroup">
+              <option value="finance-controlling">Interim Controlling</option>
+              <option value="finance-erp">ERP &amp; Proces</option>
+              <option value="finance-reporting">Reporting &amp; Data</option>
+              <option value="finance-rpa">Automatisering &amp; RPA</option>
+              <option value="finance-dashboard">Dashboarding</option>
+            </optgroup>
+            <optgroup label="Care Solutions" class="care-optgroup">
+              <option value="care-ambulant">Ambulante begeleiding</option>
+              <option value="care-gehandicaptenzorg">Gehandicaptenzorg</option>
+              <option value="care-vervanging">Vervanging / Project</option>
+            </optgroup>
+            <option value="anders">Anders</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label for="sd3">Startdatum</label><input type="date" id="sd3" name="start"></div>
+          <div class="form-group"><label for="dur3">Duur</label>
+            <select id="dur3" name="duur">
+              <option value="">Selecteer...</option>
+              <option value="1-4w">1–4 weken</option>
+              <option value="1-3m">1–3 maanden</option>
+              <option value="3-6m">3–6 maanden</option>
+              <option value="6m+">6+ maanden</option>
+              <option value="onbekend">Onbekend</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group"><label for="desc3">Beschrijving *</label><textarea id="desc3" name="desc" required placeholder="Beschrijf kort de opdracht en uw organisatie..."></textarea></div>
+        <button type="submit" class="btn-submit">
+          Verstuur contactverzoek
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <p class="footer-copy finance-only">© 2026 MA Financial Solutions</p>
+    <p class="footer-copy care-only">© 2026 MA Care Solutions</p>
+    <nav aria-label="Juridische links"><ul class="footer-links">
+      <li><a href="algemene-voorwaarden.html">Algemene Voorwaarden</a></li>
+      <li><a href="privacyverklaring.html">Privacyverklaring</a></li>
+    </ul></nav>
+    <p class="footer-kvk">KvK 93664850</p>
+  </div>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal3" role="dialog" aria-modal="true" aria-labelledby="modal3-title" aria-hidden="true">
+  <div class="modal-box">
+    <h3 class="modal-title" id="modal3-title">Aanvraag ontvangen</h3>
+    <div class="modal-body" id="modal3-body"></div>
+    <button class="modal-close" id="modal3-close">Sluiten</button>
+  </div>
+</div>
+
+<script>
+(function(){
+  'use strict';
+
+  const body = document.body;
+  const btnF = document.getElementById('toggleFinance');
+  const btnC = document.getElementById('toggleCare');
+  let isCare = false;
+
+  function syncSelect(toCare) {
+    const sel = document.getElementById('type3');
+    if (!sel) return;
+    const fg = sel.querySelector('.finance-optgroup');
+    const cg = sel.querySelector('.care-optgroup');
+    if (fg) fg.style.display = toCare ? 'none' : '';
+    if (cg) cg.style.display = toCare ? '' : 'none';
+    const cur = sel.value;
+    if (!cur || cur.startsWith('finance-') || cur.startsWith('care-')) {
+      sel.value = toCare ? 'care-ambulant' : 'finance-controlling';
+    }
+  }
+
+  function switchMode(toCare) {
+    isCare = toCare;
+    body.classList.toggle('care', isCare);
+    btnF.classList.toggle('active', !isCare);
+    btnC.classList.toggle('active', isCare);
+    btnF.setAttribute('aria-pressed', String(!isCare));
+    btnC.setAttribute('aria-pressed', String(isCare));
+    syncSelect(isCare);
+    setTimeout(() => {
+      document.querySelectorAll('.fade-in').forEach(el => el.classList.remove('visible'));
+      observe();
+    }, 50);
+  }
+
+  syncSelect(false);
+  btnF.addEventListener('click', () => switchMode(false));
+  btnC.addEventListener('click', () => switchMode(true));
+
+  function observe() {
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.fade-in:not(.visible)').forEach(el => obs.observe(el));
+  }
+  observe();
+
+  // Header shadow
+  const hdr = document.getElementById('site-header');
+  window.addEventListener('scroll', () => {
+    hdr.style.boxShadow = window.scrollY > 8 ? '0 1px 20px rgba(0,0,0,0.07)' : '';
+  }, { passive: true });
+
+  // Form
+  const form = document.getElementById('contactForm3');
+  const modal = document.getElementById('modal3');
+  const mbody = document.getElementById('modal3-body');
+  const mclose = document.getElementById('modal3-close');
+
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const n = document.getElementById('n3').value.trim();
+    const em = document.getElementById('e3').value.trim();
+    const d = document.getElementById('desc3').value.trim();
+    if (!n || !em || !d) {
+      [['n3',n],['e3',em],['desc3',d]].forEach(([id,v]) => {
+        const f = document.getElementById(id);
+        f.style.borderColor = v ? '' : '#e05c3a';
+        if (!v) f.focus();
+      });
+      return;
+    }
+    mbody.innerHTML = `<p>Bedankt, <strong>${esc(n)}</strong>! Uw contactverzoek is ontvangen.</p><p style="margin-top:.75rem;font-size:.82rem;color:var(--muted);"><em>Koppel dit formulier aan een e-mailservice voor activering. Direct bereikbaar via <a href="mailto:info@mafinsol.nl" style="color:var(--accent)">info@mafinsol.nl</a>.</em></p>`;
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden','false');
+    mclose.focus();
+    form.reset();
+    syncSelect(isCare);
+  });
+
+  mclose.addEventListener('click', close);
+  modal.addEventListener('click', e => { if (e.target === modal) close(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && modal.classList.contains('open')) close(); });
+  function close() { modal.classList.remove('open'); modal.setAttribute('aria-hidden','true'); }
+  function esc(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+})();
+</script>
+</body>
+</html>
