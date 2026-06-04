@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="_card.css">
+<style>
+body { padding:24px 26px; background:#f4f6fa; }
+.cap2 { font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#aab2c2;margin-bottom:11px; }
+.bar { display:flex; gap:14px; align-items:center; flex-wrap:wrap; }
+.bar + .cap2 { margin-top:22px; }
+
+/* ---- Mode toggle: clean sliding segmented control, centered labels ---- */
+.pill { position:relative; display:inline-grid; grid-template-columns:1fr 1fr; background:#fff;
+  border:1px solid #d6dce8; border-radius:8px; padding:4px; box-shadow:0 1px 2px rgba(10,35,66,0.05); }
+.pill .ind { position:absolute; top:4px; bottom:4px; width:calc(50% - 4px); left:4px;
+  border-radius:5px; transition:all .35s cubic-bezier(.4,0,.2,1); }
+.pill.fin .ind { background:#0a2342; box-shadow:0 2px 8px rgba(10,35,66,0.28); }
+.pill.car .ind { left:auto; right:4px; background:#0d4f5c; box-shadow:0 2px 8px rgba(13,79,92,0.28); }
+.opt { position:relative; z-index:2; font-family:'Manrope',sans-serif; font-size:12px; font-weight:700;
+  letter-spacing:0.06em; text-transform:uppercase; padding:9px 24px; text-align:center; transition:color .3s; }
+.opt.on { color:#fff; } .opt.off { color:#7a849c; }
+
+/* ---- Dark-mode segmented switch (sun / moon) ---- */
+.theme { display:inline-flex; background:#fff; border:1px solid #d6dce8; border-radius:8px;
+  padding:4px; gap:2px; box-shadow:0 1px 2px rgba(10,35,66,0.05); }
+.tbtn { width:38px; height:32px; display:flex; align-items:center; justify-content:center; border-radius:5px; color:#9aa3b5; }
+.tbtn svg { width:16px; height:16px; }
+.tbtn.act { background:#0a2342; color:#c9a961; }
+.tbtn.act.cv { background:#0d4f5c; color:#16a394; }
+.dark-demo { background:#0d1520; border-color:#1e3050; box-shadow:none; }
+.dark-demo .tbtn { color:#5d6b86; }
+</style></head>
+<body>
+<div class="cap2">Mode toggle — sliding segmented control</div>
+<div class="bar">
+  <div class="pill fin"><span class="ind"></span>
+    <span class="opt on">Finance</span><span class="opt off">Care</span></div>
+  <div class="pill car"><span class="ind"></span>
+    <span class="opt off">Finance</span><span class="opt on">Care</span></div>
+</div>
+
+<div class="cap2">Theme switch — light / dark</div>
+<div class="bar">
+  <div class="theme">
+    <span class="tbtn act"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M5 5l1.5 1.5M17.5 17.5L19 19M2 12h2M20 12h2M5 19l1.5-1.5M17.5 6.5L19 5"/></svg></span>
+    <span class="tbtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></span>
+  </div>
+  <div class="theme dark-demo">
+    <span class="tbtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M5 5l1.5 1.5M17.5 17.5L19 19M2 12h2M20 12h2M5 19l1.5-1.5M17.5 6.5L19 5"/></svg></span>
+    <span class="tbtn act cv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></span>
+  </div>
+</div>
+</body></html>

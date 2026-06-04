@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="_card.css">
+<style>
+body { padding:26px; background:#081b33; }
+.fg { display:flex; flex-direction:column; gap:7px; margin-bottom:16px; }
+.fg label { font-family:'Manrope',sans-serif; font-size:11px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; color:rgba(255,255,255,0.5); }
+.fg input, .fg select { background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.15); border-radius:2px; padding:12px 14px; color:#fff; font-size:14px; font-family:'Manrope',sans-serif; outline:none; width:100%; }
+.fg input::placeholder { color:rgba(255,255,255,0.3); }
+.fg .focus { border-color:#c9a961; background:rgba(255,255,255,0.1); }
+.row { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+.sel { appearance:none; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='rgba(255,255,255,0.4)' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:right 14px center; }
+</style></head>
+<body>
+<div class="row">
+  <div class="fg"><label>Naam *</label><input value="Jan de Vries"></div>
+  <div class="fg"><label>E-mail *</label><input class="focus" value="j.devries@bedrijf.nl"></div>
+</div>
+<div class="fg"><label>Type opdracht</label><select class="sel"><option>Interim Controlling</option></select></div>
+</body></html>

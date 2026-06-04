@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="_card.css">
+<style>
+body { padding:26px; }
+.grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+.box { display:flex; flex-direction:column; align-items:center; gap:10px; }
+.r { width:96px; height:64px; background:#0a2342; }
+.lab { font-size:12px; font-weight:700; color:#1c2430; }
+.sub { font-family:ui-monospace,Menlo,monospace; font-size:10.5px; color:#8a93a6; }
+</style></head>
+<body>
+<div class="grid">
+  <div class="box"><div class="r" style="border-radius:2px;"></div><span class="lab">Sharp</span><span class="sub">2px · buttons, tags, inputs</span></div>
+  <div class="box"><div class="r" style="border-radius:4px;"></div><span class="lab">Card</span><span class="sub">4px · cards, panels, modal</span></div>
+  <div class="box"><div class="r" style="border-radius:6px;background:#16a394;"></div><span class="lab">Pill</span><span class="sub">6px · mode toggle only</span></div>
+</div>
+</body></html>

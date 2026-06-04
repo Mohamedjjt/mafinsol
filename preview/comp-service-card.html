@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Manrope:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="_card.css">
+<style>
+body { padding:24px; background:#f4f6fa; }
+.grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+.card { position:relative; background:#fff; border:1px solid #d6dce8; border-radius:4px; padding:24px 22px; overflow:hidden; }
+.card::before { content:''; position:absolute; top:0; left:0; width:3px; height:100%; background:var(--ac); }
+.num { font-family:'Playfair Display',serif; font-size:40px; font-weight:700; line-height:1; color:var(--pr); opacity:0.10; margin-bottom:12px; }
+.t { font-family:'Playfair Display',serif; font-size:17px; font-weight:700; color:var(--pr); margin-bottom:9px; }
+.d { font-family:'Manrope',sans-serif; font-size:13px; color:#5a6680; line-height:1.65; }
+.f { --pr:#0a2342; --ac:#c9a961; }
+.c { --pr:#0d4f5c; --ac:#16a394; }
+.c .d { color:#5a7173; }
+</style></head>
+<body>
+<div class="grid">
+  <article class="card f"><div class="num">02</div><div class="t">ERP-migratie &amp; Proces</div><div class="d">Bewezen ervaring met complexe SAP-trajecten en procesherontwerp — zonder verlies van data-integriteit.</div></article>
+  <article class="card c"><div class="num">01</div><div class="t">Ambulante Begeleiding</div><div class="d">Ondersteuning van cliënten in hun eigen omgeving — bij zelfzorg, wonen en dagstructuur die écht past.</div></article>
+</div>
+</body></html>
