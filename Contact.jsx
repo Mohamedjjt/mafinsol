@@ -86,8 +86,8 @@ function Footer({ c }) {
         <p className="footer-copy">{c.footer}</p>
         <nav aria-label="Juridische links">
           <ul className="footer-links">
-            <li><a href="#">Algemene Voorwaarden</a></li>
-            <li><a href="#">Privacyverklaring</a></li>
+<li><a href="algemene-voorwaarden.html">Algemene Voorwaarden</a></li>
+<li><a href="privacyverklaring.html">Privacyverklaring</a></li>
           </ul>
         </nav>
         <p className="footer-kvk">KvK 93664850</p>
