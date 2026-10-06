@@ -21,7 +21,7 @@ body {
 }
 img, svg { max-width: 100%; display: block; }
 a { color: inherit; }
-h1, h2, h3 { overflow-wrap: break-word; hyphens: auto; font-family: var(--font-serif); color: var(--heading); margin: 0; font-weight: var(--w-bold); text-wrap: balance; }
+h1, h2, h3 { overflow-wrap: break-word; font-family: var(--font-serif); color: var(--heading); margin: 0; font-weight: var(--w-bold); text-wrap: balance; }
 p { margin: 0 0 1rem; }
 ul { margin: 0; padding: 0; list-style: none; }
 :focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
@@ -241,3 +241,5 @@ footer p { margin: 0; }
 /* Contrast: grijs op het lichte Care-paneel */
 body.care:not(.dark) .cred-meta { color: #475f61; }
 body.care .contact .eyebrow { color: #4fd6c5; }
+
+@media (max-width: 480px) { h1, h2, h3 { hyphens: auto; } }

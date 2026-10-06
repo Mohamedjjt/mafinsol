@@ -13,7 +13,7 @@ EMAIL = "info@mafinsol.nl"
 PHONE_TEL = "+31640154548"
 PHONE_TXT = "06 40 15 45 48"
 KVK = "93664850"
-V = "6"  # cache-buster voor css/js
+V = "7"  # cache-buster voor css/js
 # TODO: btw-nummer en vestigingsadres hier als <li>-regels toevoegen (zie tools/TODO.md), bijv.
 # EXTRA_CONTACT = '<li><strong>BTW</strong><span>NL...B01</span></li>'
 EXTRA_CONTACT = ""
