@@ -1,0 +1,107 @@
+{
+ "@type": "ProfessionalService",
+ "@id": "https://mafinsol.nl/#finance",
+ "name": "MA Financial Solutions",
+ "description": "Interim finance dienstverlener gespecialiseerd in SAP ERP-implementatie, financial controlling en procesoptimalisatie. Actief bij ASML, Philips, Jumbo en Van Loon Group.",
+ "url": "https://mafinsol.nl/",
+ "telephone": "+31640154548",
+ "email": "info@mafinsol.nl",
+ "address": {
+  "@type": "PostalAddress",
+  "addressLocality": "Eindhoven",
+  "addressRegion": "Noord-Brabant",
+  "addressCountry": "NL"
+ },
+ "areaServed": [
+  {
+   "@type": "Country",
+   "name": "Netherlands"
+  },
+  {
+   "@type": "Country",
+   "name": "Belgium"
+  },
+  {
+   "@type": "City",
+   "name": "Eindhoven"
+  },
+  {
+   "@type": "City",
+   "name": "Amsterdam"
+  },
+  {
+   "@type": "City",
+   "name": "Brussel"
+  }
+ ],
+ "knowsAbout": [
+  "SAP S/4HANA",
+  "SAP ECC",
+  "SAP RE-FX",
+  "IFRS 16",
+  "Interim Financial Controlling",
+  "ERP Migratie",
+  "Financial Accounting",
+  "Power BI",
+  "RPA Automatisering",
+  "SOX Controls",
+  "Management Reporting"
+ ],
+ "hasCredential": {
+  "@type": "EducationalOccupationalCredential",
+  "credentialCategory": "KvK",
+  "identifier": "93664850"
+ },
+ "knowsLanguage": [
+  "nl",
+  "en"
+ ],
+ "hasOfferCatalog": {
+  "@type": "OfferCatalog",
+  "name": "Finance Services",
+  "itemListElement": [
+   {
+    "@type": "Offer",
+    "itemOffered": {
+     "@type": "Service",
+     "name": "Interim Financial Controlling",
+     "description": "Periodieke afsluitingen, consolidatie Europese entiteiten, SOX-controles en management reporting."
+    }
+   },
+   {
+    "@type": "Offer",
+    "itemOffered": {
+     "@type": "Service",
+     "name": "SAP ERP Migratie",
+     "description": "SAP ECC naar S/4HANA migratie inclusief data-validatie en procesherontwerp."
+    }
+   },
+   {
+    "@type": "Offer",
+    "itemOffered": {
+     "@type": "Service",
+     "name": "Financial Accounting",
+     "description": "GL-accounting, IFRS 16, BTW/ICP-aangiften en internationale belastingaangiften."
+    }
+   },
+   {
+    "@type": "Offer",
+    "itemOffered": {
+     "@type": "Service",
+     "name": "Power BI Dashboarding",
+     "description": "Van ruwe data naar heldere management dashboards."
+    }
+   },
+   {
+    "@type": "Offer",
+    "itemOffered": {
+     "@type": "Service",
+     "name": "RPA Automatisering",
+     "description": "Automatiseren van repetitieve financiële processen."
+    }
+   }
+  ]
+ },
+ "image": "https://mafinsol.nl/assets/og-finance.png",
+ "logo": "https://mafinsol.nl/assets/favicon.svg"
+}

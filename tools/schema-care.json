@@ -1,0 +1,80 @@
+{
+ "@type": "ProfessionalService",
+ "@id": "https://mafinsol.nl/care/#care",
+ "name": "MA Care Solutions",
+ "description": "Zorgbegeleider voor ambulante begeleiding en gehandicaptenzorg in Noord-Brabant, Limburg en landelijk. PBMZ4 (mbo niveau 4).",
+ "url": "https://mafinsol.nl/care/",
+ "telephone": "+31640154548",
+ "email": "info@mafinsol.nl",
+ "address": {
+  "@type": "PostalAddress",
+  "addressLocality": "Eindhoven",
+  "addressRegion": "Noord-Brabant",
+  "addressCountry": "NL"
+ },
+ "areaServed": [
+  {
+   "@type": "AdministrativeArea",
+   "name": "Noord-Brabant"
+  },
+  {
+   "@type": "AdministrativeArea",
+   "name": "Limburg"
+  },
+  {
+   "@type": "Country",
+   "name": "Netherlands"
+  }
+ ],
+ "knowsAbout": [
+  "Ambulante begeleiding",
+  "Gehandicaptenzorg",
+  "PBMZ4",
+  "Ondersteuningsplannen",
+  "Zelfredzaamheid"
+ ],
+ "hasCredential": [
+  {
+   "@type": "EducationalOccupationalCredential",
+   "credentialCategory": "KvK",
+   "identifier": "93664850"
+  },
+  {
+   "@type": "EducationalOccupationalCredential",
+   "name": "PBMZ4 Persoonlijk Begeleider Maatschappelijke Zorg",
+   "credentialCategory": "MBO Diploma niveau 4"
+  }
+ ],
+ "hasOfferCatalog": {
+  "@type": "OfferCatalog",
+  "name": "Care Services",
+  "itemListElement": [
+   {
+    "@type": "Offer",
+    "itemOffered": {
+     "@type": "Service",
+     "name": "Ambulante Begeleiding",
+     "description": "Ondersteuning van cliënten thuis bij zelfredzaamheid en dagstructuur."
+    }
+   },
+   {
+    "@type": "Offer",
+    "itemOffered": {
+     "@type": "Service",
+     "name": "Gehandicaptenzorg",
+     "description": "Begeleiding voor mensen met verstandelijke en/of lichamelijke beperkingen."
+    }
+   },
+   {
+    "@type": "Offer",
+    "itemOffered": {
+     "@type": "Service",
+     "name": "Vervanging & Projectinzet",
+     "description": "Snel inzetbaar bij uitval of piekbelasting in zorginstellingen."
+    }
+   }
+  ]
+ },
+ "image": "https://mafinsol.nl/assets/og-care.png",
+ "logo": "https://mafinsol.nl/assets/favicon-care.svg"
+}
