@@ -13,7 +13,7 @@ EMAIL = "info@mafinsol.nl"
 PHONE_TEL = "+31640154548"
 PHONE_TXT = "06 40 15 45 48"
 KVK = "93664850"
-V = "2"  # cache-buster voor css/js
+V = "6"  # cache-buster voor css/js
 # TODO: btw-nummer en vestigingsadres hier als <li>-regels toevoegen (zie tools/TODO.md), bijv.
 # EXTRA_CONTACT = '<li><strong>BTW</strong><span>NL...B01</span></li>'
 EXTRA_CONTACT = ""
@@ -100,11 +100,11 @@ FINANCE = dict(
         ("Flexibel in duur en plaats", "Een project van enkele weken of een langlopend traject, op locatie of remote, afhankelijk van wat de opdracht vraagt."),
     ],
     faq=[
-        ("Hoe snel kun je starten?", "Na een korte intake kan ik op korte termijn beginnen. De exacte startdatum hangt af van mijn agenda. Neem contact op voor de actuele beschikbaarheid."),
-        ("Werk je op locatie of remote?", "Beide. Ik werk op locatie in Eindhoven, Noord-Brabant en de rest van Nederland, in België en internationaal, of remote. Dat hangt af van wat de opdracht vraagt."),
-        ("Voor welke duur ben je beschikbaar?", "Van een project van enkele weken tot een langlopend traject. Samen bepalen we wat past bij de opdracht."),
-        ("Werk je met een modelovereenkomst?", f"Ja, een modelovereenkomst is beschikbaar. Ik werk als zelfstandige onder KvK-nummer {KVK}."),
-        ("Met welke systemen heb je ervaring?", "Met SAP S/4HANA, SAP ECC en SAP RE-FX (inclusief migraties), Microsoft Dynamics en Power BI, aangevuld met Lean en RPA voor procesverbetering."),
+        ("Hoe snel kunt u starten?", "Na een korte intake kan ik op korte termijn beginnen. De exacte startdatum hangt af van mijn agenda. Neem contact op voor de actuele beschikbaarheid."),
+        ("Werkt u op locatie of remote?", "Beide. Ik werk op locatie in Eindhoven, Noord-Brabant en de rest van Nederland, in België en internationaal, of remote. Dat hangt af van wat de opdracht vraagt."),
+        ("Voor welke duur bent u beschikbaar?", "Van een project van enkele weken tot een langlopend traject. Samen bepalen we wat past bij de opdracht."),
+        ("Werkt u met een modelovereenkomst?", f"Ja, een modelovereenkomst is beschikbaar. Ik werk als zelfstandige onder KvK-nummer {KVK}."),
+        ("Met welke systemen heeft u ervaring?", "Met SAP S/4HANA, SAP ECC en SAP RE-FX (inclusief migraties), Microsoft Dynamics en Power BI, aangevuld met Lean en RPA voor procesverbetering."),
     ],
     contact_title="Een opdracht bespreken?",
     contact_lead="Laat uw gegevens achter of mail direct. Ik reageer binnen één werkdag.",
@@ -169,11 +169,11 @@ CARE = dict(
         ("Flexibel opschalen", "Bij uitval of piekbelasting kan ik snel schakelen, voor een korte periode of een langer traject."),
     ],
     faq=[
-        ("In welke regio ben je inzetbaar?", "Vooral in Noord-Brabant en Limburg, vanuit Eindhoven. Landelijke inzet is mogelijk in overleg."),
-        ("Welke opleiding heb je?", "Ik ben PBMZ4 (Persoonlijk Begeleider Maatschappelijke Zorg), een mbo-opleiding op niveau 4."),
-        ("Voor welke doelgroepen werk je?", "Voor mensen met verstandelijke en/of lichamelijke beperkingen en voor cliënten met een ondersteuningsvraag in de thuissituatie, ambulant of intramuraal."),
-        ("Hoe snel kun je beginnen?", "Ook op korte termijn, bijvoorbeeld bij uitval of piekbelasting. Neem contact op voor de actuele beschikbaarheid."),
-        ("Werk je met een modelovereenkomst?", f"Ja, een modelovereenkomst is beschikbaar. Ik werk als zelfstandige onder KvK-nummer {KVK}."),
+        ("In welke regio bent u inzetbaar?", "Vooral in Noord-Brabant en Limburg, vanuit Eindhoven. Landelijke inzet is mogelijk in overleg."),
+        ("Welke opleiding heeft u?", "Ik ben PBMZ4 (Persoonlijk Begeleider Maatschappelijke Zorg), een mbo-opleiding op niveau 4."),
+        ("Voor welke doelgroepen werkt u?", "Voor mensen met verstandelijke en/of lichamelijke beperkingen en voor cliënten met een ondersteuningsvraag in de thuissituatie, ambulant of intramuraal."),
+        ("Hoe snel kunt u beginnen?", "Ook op korte termijn, bijvoorbeeld bij uitval of piekbelasting. Neem contact op voor de actuele beschikbaarheid."),
+        ("Werkt u met een modelovereenkomst?", f"Ja, een modelovereenkomst is beschikbaar. Ik werk als zelfstandige onder KvK-nummer {KVK}."),
     ],
     contact_title="Inzet bespreken?",
     contact_lead="Laat uw gegevens achter of mail direct. Ik reageer binnen één werkdag.",
