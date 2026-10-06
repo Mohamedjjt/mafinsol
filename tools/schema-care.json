@@ -4,7 +4,6 @@
  "name": "MA Care Solutions",
  "description": "Zorgbegeleider voor ambulante begeleiding en gehandicaptenzorg in Noord-Brabant, Limburg en landelijk. PBMZ4 (mbo niveau 4).",
  "url": "https://mafinsol.nl/care/",
- "telephone": "+31640154548",
  "email": "info@mafinsol.nl",
  "address": {
   "@type": "PostalAddress",

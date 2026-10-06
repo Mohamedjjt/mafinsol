@@ -10,10 +10,8 @@ import html, json, pathlib
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 SITE = "https://mafinsol.nl"
 EMAIL = "info@mafinsol.nl"
-PHONE_TEL = "+31640154548"
-PHONE_TXT = "06 40 15 45 48"
 KVK = "93664850"
-V = "7"  # cache-buster voor css/js
+V = "8"  # cache-buster voor css/js
 # TODO: btw-nummer en vestigingsadres hier als <li>-regels toevoegen (zie tools/TODO.md), bijv.
 # EXTRA_CONTACT = '<li><strong>BTW</strong><span>NL...B01</span></li>'
 EXTRA_CONTACT = ""
@@ -386,7 +384,6 @@ def page(p):
         <p class="contact-lead">{esc(p["contact_lead"])}</p>
         <ul class="contact-list">
           <li><strong>E-mail</strong><a href="mailto:{EMAIL}">{EMAIL}</a></li>
-          <li><strong>Telefoon</strong><a href="tel:{PHONE_TEL}">{PHONE_TXT}</a></li>
           <li><strong>Plaats</strong><span>Eindhoven</span></li>
           <li><strong>KvK</strong><span>{KVK}</span></li>
           {EXTRA_CONTACT}

@@ -12,7 +12,7 @@ Dit moet jij invullen of bevestigen voordat de branch `herontwerp` live gaat (na
 ## Inhoud
 - [ ] "ik" in plaats van "wij": past bij een eenmanszaak. Bevestig dat dit zo moet (ook voor Care).
 - [ ] Controleer de cijfers: "4+ jaar interim", "meer dan 5 jaar finance-ervaring bij grote organisaties", "4 grote opdrachtgevers".
-- [ ] Telefoonnummer (06 40 15 45 48) staat nu zichtbaar op de site (stond al in de structured data). Wil je dat?
+- [x] Telefoonnummer is op verzoek van Mohamed van de site en uit de structured data gehaald (2026-10-06).
 - [ ] Foto van jou + korte bio (grote winst voor vertrouwen).
 - [ ] 2 of 3 cases met probleem, aanpak en resultaat (geen klantgegevens die niet mogen).
 - [ ] LinkedIn-profiel koppelen (URL ontbreekt).
