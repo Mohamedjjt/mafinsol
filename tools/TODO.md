@@ -1,6 +1,6 @@
 # Open punten voor Mohamed (herontwerp mafinsol.nl)
 
-Dit moet jij invullen of bevestigen voordat de branch `herontwerp` live gaat (naar `main`).
+Het herontwerp staat live (branch `main`). Dit moet jij nog invullen of bevestigen.
 
 ## Verplicht / juridisch
 - [ ] **Btw-nummer** toevoegen (contactblok + footer). Staat als HTML-commentaar in `tools/build.py` (zoek "TODO").
